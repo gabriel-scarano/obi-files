@@ -1,3 +1,7 @@
+/*
+    OBI - NÍVEL SÊNIOR - 2017 - FASE 1 - FRETE
+                                                */
+
 #include <stdio.h>
 #define INF 10000000
 #define MAX 101
