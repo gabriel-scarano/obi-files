@@ -32,6 +32,4 @@ def dfs(visited, graph, node):
         for neighbour in graph[node]:
             dfs(visited, graph, neighbour)
 
-    print("Following is the Depth-First Search")
-
 dfs(visited, graph, '5')
