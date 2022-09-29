@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-typedef struct node
+typedef struct Node
 {
     int vertexNum;
     struct Node *next;
@@ -12,6 +13,22 @@ typedef struct List
 } List;
 
 List *adjlist[4] = {0};
+int maxNode = 3;
+
+void printList()
+{   int i;
+    for (i = 0; i < maxNode; i++)
+    {   Node *p = adjlist[i]->head;
+        printf("Adjacency list for vertex %d\n", i);
+
+        while (p)
+        {   printf("%d ", p->vertexNum);
+            p = p->next;
+        }
+
+        printf("\n");
+    }
+}
 
 void addNode(int s, int d)
 {
