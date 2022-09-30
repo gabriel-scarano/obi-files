@@ -1,40 +1,48 @@
-##
-##  OBI - NÍVEL SÊNIOR - 2018 - FASE 3 - BALDES 
-##                                               
-
 res = []
 
-N, M = [int(i) for i in input().split()]
+N, M = map(int, input().split())
+X = [int(i) for i in input().split()]
 
-baldes = [[] for y in range(N+1)]
-
-L = [int(i) for i in input().split()]
+mat = [[] for _ in range(N+1)]
 
 i = 1
-for x in L:
-    baldes[i].append(x)
+for x in X:
+    mat[i].append(x)
     i += 1
 
 for i in range(M):
-    L = [int(i) for i in input().split()]
+    T, A, B = map(int, input().split())
 
-    if L[0] == 1:
-        baldes[L[2]].append(L[1])
-    elif L[0] == 2:
-        dif = -1
-        i = L[1]
-        while i <= L[2]:
-            j = L[1]
-            while j <= L[2]:
-                if i != j:
-                    if (max(baldes[i]) - min(baldes[j]) > dif):
-                        dif = max(baldes[i]) - min(baldes[j])
+    if T == 1:
+        mat[B].append(A)
+    elif T == 2:
+        maior = []
+        menor = []
+        
+        for i in range(A, B+1, 1):
+            maior.append(max(mat[i]))
+            menor.append(min(mat[i]))
 
-                j += 1 
-            
+        i = 0
+        ind_max = 0 
+        G = 0
+        P = 1000001
+        for x in maior:
+            if x > G:
+                G = x
+                ind_max = i
+
             i += 1
 
-        res.append(dif)
+        i = 0
+        for x in menor:
+            if x < P and i != ind_max:
+                P = x
+
+            i += 1
+
+        res.append(G - P)
+        
 
 for x in res:
     print(x)
